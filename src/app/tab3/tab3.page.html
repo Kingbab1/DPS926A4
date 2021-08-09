@@ -1,0 +1,61 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title> HeadLines </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Headlines</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label>Region</ion-label>
+          <ion-select
+            [(ngModel)]="selectedRegion"
+            okText="OK"
+            cancelText="Cancel"
+            (ngModelChange)="regionChange($event)"
+          >
+            <ion-select-option *ngFor="let region of regionOptions">
+              {{region}}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-label>Topic</ion-label>
+          <ion-select
+            [(ngModel)]="selectedTopic"
+            okText="OK"
+            cancelText="Cancel"
+            (ngModelChange)="topicChange($event)"
+          >
+            <ion-select-option *ngFor="let topic of topicOptions">
+              {{topic}}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row> 
+      <ion-list *ngFor="let article of articleList">
+        <ion-card (click)="articleSelected(article)">
+          <img src="{{article.urlToImage}}" />
+          <ion-card-header>
+            <ion-card-subtitle>{{article.publishedAt}}</ion-card-subtitle>
+            <ion-card-title>{{article.title}}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            {{article.description}}
+          </ion-card-content>
+        </ion-card>
+      </ion-list>
+    </ion-row>
+  </ion-grid>
+</ion-content>

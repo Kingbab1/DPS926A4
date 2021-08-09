@@ -1,0 +1,30 @@
+<ion-header translucent>
+  <ion-toolbar class="toolbar">
+    <ion-title class="label">Details</ion-title>
+    <ion-buttons  slot="start">
+      <ion-back-button class="toolbar"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button  (click)="saveClicked()" color="default" >
+        {{buttonText}}
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>,
+<ion-content fullscreen>
+  <ion-card>
+    <img src="{{consumptionArticle.urlToImage}}" />
+    <ion-card-header>
+      <ion-card-subtitle>{{consumptionArticle.author}}</ion-card-subtitle>
+      <ion-card-title>{{consumptionArticle.title}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      {{consumptionArticle.content}}
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+<ion-footer>
+  <ion-button expand="full" color="secondary" href="{{consumptionArticle.url}}">
+    Read Full Story
+</ion-button>
+</ion-footer>
